@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
+import mongoose from "mongoose";
 import { Contact } from "../models/contact";
+
+const { ObjectId } = mongoose.Types;
 
 export const getContacts = async (req: Request, res: Response) => {
   try {
@@ -12,7 +15,7 @@ export const getContacts = async (req: Request, res: Response) => {
 
 export const getContactById = async (req: Request, res: Response) => {
   try {
-    const contact = await Contact.findById(req.params.contactId);
+    const contact = await Contact.findById(new ObjectId(req.params.contactId));
     if (!contact) {
       return res.status(404).send("Contact not found");
     }
@@ -35,7 +38,7 @@ export const createContact = async (req: Request, res: Response) => {
 export const updateContact = async (req: Request, res: Response) => {
   try {
     const contact = await Contact.findByIdAndUpdate(
-      req.params.contactId,
+      new ObjectId(req.params.contactId),
       req.body,
       { new: true }
     );
@@ -50,7 +53,7 @@ export const updateContact = async (req: Request, res: Response) => {
 
 export const deleteContact = async (req: Request, res: Response) => {
   try {
-    const contact = await Contact.findByIdAndDelete(req.params.contactId);
+    const contact = await Contact.findByIdAndDelete(new ObjectId(req.params.contactId));
     if (!contact) {
       return res.status(404).send("Contact not found");
     }

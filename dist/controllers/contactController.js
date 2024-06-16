@@ -8,9 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteContact = exports.updateContact = exports.createContact = exports.getContactById = exports.getContacts = void 0;
+const mongoose_1 = __importDefault(require("mongoose"));
 const contact_1 = require("../models/contact");
+const { ObjectId } = mongoose_1.default.Types;
 const getContacts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const contacts = yield contact_1.Contact.find();
@@ -23,7 +28,7 @@ const getContacts = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getContacts = getContacts;
 const getContactById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const contact = yield contact_1.Contact.findById(req.params.contactId);
+        const contact = yield contact_1.Contact.findById(new ObjectId(req.params.contactId));
         if (!contact) {
             return res.status(404).send("Contact not found");
         }
@@ -47,7 +52,7 @@ const createContact = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.createContact = createContact;
 const updateContact = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const contact = yield contact_1.Contact.findByIdAndUpdate(req.params.contactId, req.body, { new: true });
+        const contact = yield contact_1.Contact.findByIdAndUpdate(new ObjectId(req.params.contactId), req.body, { new: true });
         if (!contact) {
             return res.status(404).send("Contact not found");
         }
@@ -60,7 +65,7 @@ const updateContact = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.updateContact = updateContact;
 const deleteContact = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const contact = yield contact_1.Contact.findByIdAndDelete(req.params.contactId);
+        const contact = yield contact_1.Contact.findByIdAndDelete(new ObjectId(req.params.contactId));
         if (!contact) {
             return res.status(404).send("Contact not found");
         }
