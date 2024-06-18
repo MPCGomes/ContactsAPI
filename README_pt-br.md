@@ -11,7 +11,7 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
 - **API First**: A API foi projetada e documentada antes da implementação do código.
 - **Operações CRUD**: Criar, ler, atualizar e excluir contatos.
 - **Validação de dados**: Garante que os dados de contato estejam em conformidade com o esquema especificado usando o Mongoose.
-- **Documentação do Swagger**: Fornece documentação de API interativa usando [Swagger UI](http://localhost:5500/api-docs) e [Documentação da API SwaggerHub](https://app.swaggerhub.com/apis/MPCGOMES2 /ContatosAPI/1.0.0).
+- **Documentação do Swagger**: Fornece documentação de API interativa usando [Swagger UI](http://localhost:5500/api-docs) e [Documentação da API SwaggerHub](https://app.swaggerhub.com/apis/MPCGOMES2/ContatosAPI/1.0.0).
 
 ## Tecnologias Usadas
 
