@@ -1,6 +1,6 @@
 # ContactsAPI
 
-[![Português](https://img.shields.io/badge/lang-portuguese-green.svg)](README_pt-br.md)
+[![English](https://img.shields.io/badge/lang-english-red.svg)](README.md)
 
 ## Visão Geral
 
