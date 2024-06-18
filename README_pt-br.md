@@ -2,65 +2,65 @@
 
 [![Português](https://img.shields.io/badge/lang-portuguese-green.svg)](README_pt-br.md)
 
-## Overview
+## Visão Geral
 
-ContactsAPI is a RESTful Node.js and Express.js application for managing a contact list with fields such as picture, name, company, multiple phone numbers, emails, and significant dates. This project uses TypeScript for static typing and MongoDB for database management.
+ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma lista de contatos com campos como foto, nome, empresa, múltiplos números de telefone, e-mails e datas significativas. Este projeto usa TypeScript para digitação estática e MongoDB para gerenciamento de banco de dados.
 
-## Features
+## Características
 
-- **API First**: The API was designed and documented before the implementation of the code.
-- **CRUD Operations**: Create, Read, Update, and Delete contacts.
-- **Data Validation**: Ensures that contact data conforms to the specified schema using Mongoose.
-- **Swagger Documentation**: Provides interactive API documentation using [Swagger UI](http://localhost:5500/api-docs) and [SwaggerHub API Documentation](https://app.swaggerhub.com/apis/MPCGOMES2/ContactsAPI/1.0.0).
+- **API First**: A API foi projetada e documentada antes da implementação do código.
+- **Operações CRUD**: Criar, ler, atualizar e excluir contatos.
+- **Validação de dados**: Garante que os dados de contato estejam em conformidade com o esquema especificado usando o Mongoose.
+- **Documentação do Swagger**: Fornece documentação de API interativa usando [Swagger UI](http://localhost:5500/api-docs) e [Documentação da API SwaggerHub](https://app.swaggerhub.com/apis/MPCGOMES2 /ContatosAPI/1.0.0).
 
-## Technologies Used
+## Tecnologias Usadas
 
-- **Express.js**: Web framework for building the server-side.
-- **MongoDB**: NoSQL database used for storing contact information.
-- **Mongoose**: ODM (Object Data Modeling) library for defining schemas and interacting with MongoDB.
-- **Node.js**: JavaScript runtime for building the server-side.
-- **Postman**: Tool used for testing and interacting with the APIs.
-- **Swagger Editor**: Tool for designing and documenting the APIs with the OpenAPI Specification.
-- **SwaggerHub**: Platform for hosting and collaborating on the API documentation.
-- **Swagger UI**: Tool for documenting and testing the APIs, providing an interactive interface.
-- **TypeScript**: Superset of JavaScript that adds static typing to the server-side code.
-- **YAMLJS**: Library for parsing YAML files, used to load the Swagger documentation.
+- **Express.js**: Estrutura Web para construção do lado do servidor.
+- **MongoDB**: Banco de dados NoSQL usado para armazenar informações de contato.
+- **Mongoose**: Biblioteca ODM (Object Data Modeling) para definição de esquemas e interação com MongoDB.
+- **Node.js**: Tempo de execução JavaScript para construção do lado do servidor.
+- **Postman**: Ferramenta utilizada para testes e interação com as APIs.
+- **Swagger Editor**: Ferramenta para projetar e documentar as APIs com a especificação OpenAPI.
+- **SwaggerHub**: Plataforma para hospedagem e colaboração na documentação da API.
+- **Swagger UI**: Ferramenta para documentar e testar as APIs, fornecendo uma interface interativa.
+- **TypeScript**: Superconjunto de JavaScript que adiciona digitação estática ao código do lado do servidor.
+- **YAMLJS**: Biblioteca para análise de arquivos YAML, usada para carregar a documentação do Swagger.
 
-## Prerequisites
+## Pré-requisitos
 
 - **Node.js**: v12.x or higher
 - **npm**: v6.x or higher
 - **MongoDB**: v4.x or higher
 
-## Installation
+## Instalação
 
-1. **Clone the repository**:
+1. **Clonar repositório**:
    ```bash
    git clone https://github.com/your-username/ContactsAPI.git
    cd ContactsAPI
    ```
 
-2. **Install dependencies**:
+2. **Instalar dependências**:
    ```bash
    npm install
    ```
 
-3. **Set up TypeScript**:
+3. **Configurar TypeScript**:
    ```bash
    npx tsc
    ```
 
-4. **Start MongoDB**:
+4. **Iniciar MongoDB**:
    - **Windows/Mac/Linux**: Follow the [official MongoDB installation guide](https://docs.mongodb.com/manual/installation/).
 
-5. **Start the server**:
+5. **Iniciar servidor**:
    ```bash
    node dist/index.js
    ```
 
 ## API Endpoints
 
-### Create a New Contact
+### Criar Novo Contato
 
 - **Method**: POST
 - **URL**: \`/contacts\`
@@ -93,17 +93,17 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
   }
   ```
 
-### Get All Contacts
+### Obter Todos os Contatos
 
 - **Method**: GET
 - **URL**: \`/contacts\`
 
-### Get Contact by ID
+### Obter Contato por ID
 
 - **Method**: GET
 - **URL**: \`/contacts/{contactId}\`
 
-### Update a Contact
+### Atualizar Contato
 
 - **Method**: PUT
 - **URL**: \`/contacts/{contactId}\`
@@ -136,12 +136,12 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
   }
   ```
 
-### Delete a Contact
+### Deletar Contato
 
 - **Method**: DELETE
 - **URL**: \`/contacts/{contactId}\`
 
-## Project Structure
+## Estrutura do Projeto
 
 ```
 .
@@ -162,6 +162,6 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 └── yarn.lock
 ```
 
-## License
+## Licença
 
-This project is licensed under the MIT License.
+Este projeto está licenciado sob a licença MIT.
