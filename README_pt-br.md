@@ -63,8 +63,8 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
 ### Criar Novo Contato
 
 - **Method**: POST
-- **URL**: \`/contacts\`
-- **Headers**: \`Content-Type: application/json\`
+- **URL**: /api/v1/contacts
+- **Headers**: Content-Type: application/json
 - **Body**:
   ```json
   {
@@ -96,18 +96,18 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
 ### Obter Todos os Contatos
 
 - **Method**: GET
-- **URL**: \`/contacts\`
+- **URL**: /api/v1/contacts
 
 ### Obter Contato por ID
 
 - **Method**: GET
-- **URL**: \`/contacts/{contactId}\`
+- **URL**: /api/v1/contacts/{contactId}
 
 ### Atualizar Contato
 
 - **Method**: PUT
-- **URL**: \`/contacts/{contactId}\`
-- **Headers**: \`Content-Type: application/json\`
+- **URL**: /api/v1/contacts/{contactId}
+- **Headers**: Content-Type: application/json
 - **Body**:
   ```json
   {
@@ -139,7 +139,7 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
 ### Deletar Contato
 
 - **Method**: DELETE
-- **URL**: \`/contacts/{contactId}\`
+- **URL**: /api/v1/contacts/{contactId}
 
 ## Estrutura do Projeto
 

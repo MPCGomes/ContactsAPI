@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import contactRoutes from "./routes/contactRoutes";
+import contactRoutes from "./routes/contactRoutesV1";
 import { setupSwagger } from "./utils/swagger";
 
 const app = express();
@@ -18,7 +18,7 @@ mongoose
 
 app.use(bodyParser.json());
 
-app.use("/contacts", contactRoutes);
+app.use("/api/v1/contacts", contactRoutes);
 setupSwagger(app);
 
 app.listen(PORT, () => {
