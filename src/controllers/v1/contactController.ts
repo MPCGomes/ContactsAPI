@@ -1,12 +1,10 @@
 import { Request, Response } from "express";
-import mongoose from "mongoose";
-import { Contact } from "../models/contact";
-
-const { ObjectId } = mongoose.Types;
+import * as contactRepository from "../../repositories/contactRepository";
+import { ContactDTO } from "../../dtos/v1/contactDTO";
 
 export const getContacts = async (req: Request, res: Response) => {
   try {
-    const contacts = await Contact.find();
+    const contacts = await contactRepository.getContactsV1();
     res.json(contacts);
   } catch (error) {
     res.status(500).send(error);
@@ -15,7 +13,9 @@ export const getContacts = async (req: Request, res: Response) => {
 
 export const getContactById = async (req: Request, res: Response) => {
   try {
-    const contact = await Contact.findById(new ObjectId(req.params.contactId));
+    const contact = await contactRepository.getContactByIdV1(
+      req.params.contactId
+    );
     if (!contact) {
       return res.status(404).send("Contact not found");
     }
@@ -27,8 +27,8 @@ export const getContactById = async (req: Request, res: Response) => {
 
 export const createContact = async (req: Request, res: Response) => {
   try {
-    const newContact = new Contact(req.body);
-    await newContact.save();
+    const contactDTO: ContactDTO = req.body;
+    const newContact = await contactRepository.createContactV1(contactDTO);
     res.status(201).json(newContact);
   } catch (error) {
     res.status(500).send(error);
@@ -37,10 +37,10 @@ export const createContact = async (req: Request, res: Response) => {
 
 export const updateContact = async (req: Request, res: Response) => {
   try {
-    const contact = await Contact.findByIdAndUpdate(
-      new ObjectId(req.params.contactId),
-      req.body,
-      { new: true }
+    const contactDTO: ContactDTO = req.body;
+    const contact = await contactRepository.updateContactV1(
+      req.params.contactId,
+      contactDTO
     );
     if (!contact) {
       return res.status(404).send("Contact not found");
@@ -53,7 +53,9 @@ export const updateContact = async (req: Request, res: Response) => {
 
 export const deleteContact = async (req: Request, res: Response) => {
   try {
-    const contact = await Contact.findByIdAndDelete(new ObjectId(req.params.contactId));
+    const contact = await contactRepository.deleteContactV1(
+      req.params.contactId
+    );
     if (!contact) {
       return res.status(404).send("Contact not found");
     }

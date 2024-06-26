@@ -4,7 +4,7 @@
 
 ## Visão Geral
 
-ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma lista de contatos com campos como foto, nome, empresa, múltiplos números de telefone, e-mails e datas significativas. Este projeto usa TypeScript para digitação estática e MongoDB para gerenciamento de banco de dados.
+ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma lista de contatos com campos como photoUrl, GivenName, familyName, vários phoneNumbers, emailAddresses e events. Este projeto usa TypeScript para digitação estática e MongoDB para gerenciamento de banco de dados. A API é documentada usando Swagger para facilitar a interação.
 
 ## Características
 

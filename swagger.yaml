@@ -1,11 +1,15 @@
 openapi: 3.0.0
 info:
   title: ContactsAPI
-  version: 1.0.0
-  description: This API allows to manage a contact list with fields such as picture, name, company, multiple phone numbers, emails, and significant dates. It ensures required fields are present and supports multiple labels for phone numbers, emails, and dates.
+  version: 2.0.0
+  description: This API allows you to manage a contact list with fields such as photoUrl, givenName, familyName, multiple phoneNumbers, emailAddresses, and events. Version 2 includes improvements and new features.
+
 servers:
-  - url: http://localhost:5500
-    description: Local development server
+  - url: http://localhost:5500/api/v1
+    description: V1 Server
+  - url: http://localhost:5500/api/v2
+    description: V2 Server
+
 paths:
   /contacts:
     get:
@@ -20,6 +24,22 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Contact"
+              examples:
+                contactList:
+                  value: [
+                    {
+                      givenName: "Marcos",
+                      familyName: "Gomes",
+                      phoneNumbers: [{ value: "+00 00 00000-0000", type: "mobile" }],
+                      emailAddresses: [{ value: "marcos.gomes@example.com", type: "home" }]
+                    },
+                    {
+                      givenName: "Gomes",
+                      familyName: "Marcos",
+                      phoneNumbers: [{ value: "+00 00 000-000-0000", type: "mobile" }],
+                      emailAddresses: [{ value: "gomes.marcos@example.com", type: "home" }]
+                    }
+                  ]
     post:
       summary: Add a new contact
       description: Add a new contact to the contact list.
@@ -30,6 +50,14 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Contact"
+            examples:
+              newContact:
+                value: {
+                  givenName: "Marcos",
+                  familyName: "Gomes",
+                  phoneNumbers: [{ value: "+00 00 00000-0000", type: "mobile" }],
+                  emailAddresses: [{ value: "marcos.gomes@example.com", type: "home" }]
+                }
       responses:
         "201":
           description: Contact created successfully.
@@ -51,10 +79,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
+              examples:
+                contact:
+                  value: {
+                    givenName: "Marcos",
+                    familyName: "Gomes",
+                    phoneNumbers: [{ value: "+00 00 00000-0000", type: "mobile" }],
+                    emailAddresses: [{ value: "marcos.gomes@example.com", type: "home" }]
+                  }
         "404":
           description: Contact not found.
     put:
-      summary: Update an existing contact
+      summary: Update an existing contact (V1)
       description: Update a contact by its ID.
       parameters:
         - in: path
@@ -70,6 +106,44 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Contact"
+            examples:
+              updatedContact:
+                value: {
+                  givenName: "Marcos",
+                  familyName: "Gomes",
+                  phoneNumbers: [{ value: "+00 00 0000-0000", type: "work" }],
+                  emailAddresses: [{ value: "marcos.gomes@example2.com", type: "work" }]
+                }
+      responses:
+        "200":
+          description: Contact updated successfully.
+        "404":
+          description: Contact not found.
+    patch:
+      summary: Update an existing contact (V2)
+      description: Update a contact by its ID.
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema:
+            type: string
+          description: The ID of the contact to update.
+      requestBody:
+        description: The updated contact information.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+            examples:
+              updatedContact:
+                value: {
+                  givenName: "Marcos",
+                  familyName: "Gomes",
+                  phoneNumbers: [{ value: "+00 00 0000-0000", type: "work" }],
+                  emailAddresses: [{ value: "marcos.gomes@example2.com", type: "work" }]
+                }
       responses:
         "200":
           description: Contact updated successfully.
@@ -96,67 +170,156 @@ components:
     Contact:
       type: object
       properties:
-        Picture:
+        photoUrl:
           type: string
           format: uri
           nullable: true
-        FirstName:
+        givenName:
           type: string
-        LastName:
-          type: string
-          nullable: true
-        Company:
+        familyName:
           type: string
           nullable: true
-        Phone:
+        middleName:
+          type: string
+          nullable: true
+        honorificPrefix:
+          type: string
+          nullable: true
+        honorificSuffix:
+          type: string
+          nullable: true
+        phoneticGivenName:
+          type: string
+          nullable: true
+        phoneticMiddleName:
+          type: string
+          nullable: true
+        phoneticFamilyName:
+          type: string
+          nullable: true
+        nickname:
+          type: string
+          nullable: true
+        fileAs:
+          type: string
+          nullable: true
+        organizations:
           type: array
           items:
             type: object
             properties:
-              Number:
+              name:
                 type: string
-              Label:
+              department:
                 type: string
-                enum:
-                  [
-                    "None",
-                    "Mobile",
-                    "Work",
-                    "Home",
-                    "Main",
-                    "Work Fax",
-                    "Home Fax",
-                    "Pager",
-                    "Other",
-                    "Custom",
-                  ]
-                default: "Mobile"
-            required:
-              - Number
-              - Label
-        Email:
+                nullable: true
+              title:
+                type: string
+                nullable: true
+        addresses:
           type: array
           items:
             type: object
             properties:
-              Address:
+              streetAddress:
                 type: string
-                format: email
-              Label:
+              city:
                 type: string
-                enum: ["None", "Home", "Work", "Other", "Custom"]
-                default: "Home"
-        SignificantDate:
+              region:
+                type: string
+              country:
+                type: string
+              postalCode:
+                type: string
+              type:
+                type: string
+        phoneNumbers:
           type: array
           items:
             type: object
             properties:
-              Date:
+              value:
                 type: string
-                format: date
-              Label:
+              type:
                 type: string
-                enum: ["None", "Birthday", "Anniversary", "Other", "Custom"]
+        emailAddresses:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              type:
+                type: string
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+              type:
+                type: string
+        urls:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              type:
+                type: string
+        relations:
+          type: array
+          items:
+            type: object
+            properties:
+              person:
+                type: string
+              type:
+                type: string
+        imClients:
+          type: array
+          items:
+            type: object
+            properties:
+              protocol:
+                type: string
+              username:
+                type: string
+        userDefined:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+        biographies:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+        occupations:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              company:
+                type: string
+        memberships:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              domain:
+                type: string
       required:
-        - FirstName
-        - Phone
+        - givenName

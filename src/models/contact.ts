@@ -1,83 +1,170 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface Phone {
-  number: string;
-  label:
-    | "None"
-    | "Mobile"
-    | "Work"
-    | "Home"
-    | "Main"
-    | "Work Fax"
-    | "Home Fax"
-    | "Pager"
-    | "Other"
-    | "Custom";
+  value: string;
+  type: string;
 }
 
 export interface Email {
-  address: string;
-  label: "None" | "Home" | "Work" | "Other" | "Custom";
+  value: string;
+  type: string;
 }
 
-export interface SignificantDate {
-  date: string;
-  label: "None" | "Birthday" | "Anniversary" | "Other" | "Custom";
+export interface Event {
+  value: string;
+  type: string;
+}
+
+export interface Address {
+  streetAddress: string;
+  city: string;
+  region: string;
+  country: string;
+  postalCode: string;
+  type: string;
+}
+
+export interface URL {
+  value: string;
+  type: string;
+}
+
+export interface Relationship {
+  person: string;
+  type: string;
+}
+
+export interface IMClient {
+  protocol: string;
+  username: string;
+}
+
+export interface Biography {
+  value: string;
 }
 
 export interface ContactDocument extends Document {
-  picture?: string;
-  firstName: string;
-  lastName?: string;
-  company?: string;
-  phone: Phone[];
-  email?: Email[];
-  significanteDate?: SignificantDate[];
+  photoUrl?: string;
+  givenName: string;
+  middleName?: string;
+  familyName?: string;
+  honorificPrefix?: string;
+  honorificSuffix?: string;
+  phoneticGivenName?: string;
+  phoneticMiddleName?: string;
+  phoneticFamilyName?: string;
+  nickname?: string;
+  fileAs?: string;
+  organizations?: {
+    name: string;
+    department?: string;
+    title?: string;
+  }[];
+  addresses: Address[];
+  phoneNumbers: Phone[];
+  emailAddresses: Email[];
+  events: Event[];
+  urls: URL[];
+  relations: Relationship[];
+  imClients: IMClient[];
+  userDefined?: { key: string; value: string }[];
+  biographies: Biography[];
+  occupations?: {
+    title: string;
+    company: string;
+  }[];
+  memberships?: {
+    type: string;
+    domain: string;
+  }[];
 }
 
 const contactSchema: Schema = new Schema({
-  picture: { type: String },
-  firstName: { type: String, required: true },
-  lastName: { type: String },
-  company: { type: String },
-  phone: [
+  photoUrl: { type: String },
+  givenName: { type: String, required: true },
+  middleName: { type: String },
+  familyName: { type: String },
+  honorificPrefix: { type: String },
+  honorificSuffix: { type: String },
+  phoneticGivenName: { type: String },
+  phoneticMiddleName: { type: String },
+  phoneticFamilyName: { type: String },
+  nickname: { type: String },
+  fileAs: { type: String },
+  organizations: [
     {
-      number: { type: String, required: true },
-      label: {
-        type: String,
-        enum: [
-          "None",
-          "Mobile",
-          "Work",
-          "Home",
-          "Main",
-          "Work Fax",
-          "Home Fax",
-          "Pager",
-          "Other",
-          "Custom",
-        ],
-        default: "Mobile",
-      },
+      name: { type: String },
+      department: { type: String },
+      title: { type: String },
     },
   ],
-  email: [
+  addresses: [
     {
-      address: { type: String },
-      label: {
-        type: String,
-        enum: ["None", "Home", "Work", "Other", "Custom"],
-        default: "Home",
-      },
+      streetAddress: { type: String },
+      city: { type: String },
+      region: { type: String },
+      country: { type: String },
+      postalCode: { type: String },
+      type: { type: String },
     },
   ],
-  significantDate: [
+  phoneNumbers: [
+    {
+      value: { type: String },
+      type: { type: String },
+    },
+  ],
+  emailAddresses: [
+    {
+      value: { type: String },
+      type: { type: String },
+    },
+  ],
+  events: [
     {
       date: { type: String },
-      label: {
-        type: String,
-        enum: ["None", "Birthday", "Anniversary", "Other", "Custom"],
-      },
+      type: { type: String },
+    },
+  ],
+  urls: [
+    {
+      value: { type: String },
+      type: { type: String },
+    },
+  ],
+  relations: [
+    {
+      person: { type: String },
+      type: { type: String },
+    },
+  ],
+  imClients: [
+    {
+      protocol: { type: String },
+      username: { type: String },
+    },
+  ],
+  userDefined: [
+    {
+      key: { type: String },
+      value: { type: String },
+    },
+  ],
+  biographies: [
+    {
+      value: { type: String },
+    },
+  ],
+  occupations: [
+    {
+      title: { type: String },
+      company: { type: String },
+    },
+  ],
+  memberships: [
+    {
+      type: { type: String },
+      domain: { type: String },
     },
   ],
 });
