@@ -5,6 +5,8 @@
 - Camada de serviços para lógica de negócios, separando dos controladores.
 - Serviços para v1 e v2 para lidar com lógica de negócios.
 - Controladores atualizados para usar Serviços para v1 e v2.
+- Coleções do Postman para V1 e V2.
+- Instruções para importar coleções do Postman no README.
 
 ## [2.0.0] - 27-06-2024
 ### Adicionado

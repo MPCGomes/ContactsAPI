@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "5713987e-be39-4040-b76c-47f41cd6bf63",
+		"name": "ContactsAPI V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33153967"
+	},
+	"item": [
+		{
+			"name": "Create New Contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"givenName\": \"John\",\r\n  \"familyName\": \"Doe\",\r\n  \"phoneNumbers\": [{ \"value\": \"+00 00 00000-0000\", \"type\": \"mobile\" }],\r\n  \"emailAddresses\": [{ \"value\": \"john.doe@example.com\", \"type\": \"home\" }]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5500/api/v2/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"api",
+						"v2",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5500/api/v2/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"api",
+						"v2",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contact by ID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5500/api/v2/contacts/666f3af5b30000167b5d632e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"api",
+						"v2",
+						"contacts",
+						"666f3af5b30000167b5d632e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Contact by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"givenName\": \"John\",\r\n  \"familyName\": \"Doe\",\r\n  \"phoneNumbers\": [{ \"value\": \"+00 00 00000-0000\", \"type\": \"mobile\" }],\r\n  \"emailAddresses\": [{ \"value\": \"john.doe@example.com\", \"type\": \"home\" }]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5500/api/v2/contacts/666f3af5b30000167b5d632e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"api",
+						"v2",
+						"contacts",
+						"666f3af5b30000167b5d632e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contact by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5500/api/v2/contacts/667c2dde7a47cd85a4c108c4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"api",
+						"v2",
+						"contacts",
+						"667c2dde7a47cd85a4c108c4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"givenName\": \"John\",\r\n  \"familyName\": \"Doe\",\r\n  \"phoneNumbers\": [{ \"value\": \"+00 00 0000-0000\", \"type\": \"work\" }],\r\n  \"emailAddresses\": [{ \"value\": \"john.doe@example2.com\", \"type\": \"work\" }]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5500/api/v2/contacts/667c2e497a47cd85a4c108ce",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5500",
+					"path": [
+						"api",
+						"v2",
+						"contacts",
+						"667c2e497a47cd85a4c108ce"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

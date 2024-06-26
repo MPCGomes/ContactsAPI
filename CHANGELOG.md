@@ -7,6 +7,8 @@
 - Service layer for business logic, separating it from controllers.
 - Services for v1 and v2 to handle business logic.
 - Updated Controllers to use Services for v1 and v2.
+- Postman collections for V1 and V2.
+- Instructions to import Postman collections in README.
 
 ## [2.0.0] - 2024-06-27
 ### Added

@@ -163,6 +163,7 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 
 ```
 .
+├── node_modules
 ├── src
 │   ├── controllers
 │   │   ├── v1
@@ -196,11 +197,25 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 │   ├── utils
 │   │   └── swagger.ts
 │   └── index.ts
+├── postman
+│   ├── ContactsAPI V1.postman_collection.json
+│   ├── ContactsAPI V2.postman_collection.json
 ├── swagger.yaml
 ├── package.json
 ├── tsconfig.json
 └── yarn.lock
 ```
+
+## Postman Collection
+
+To make it easier to test the API, you can import the Postman collections:
+
+1. Download the [ContactsAPI V1 Postman Collection](./postman/ContactsAPI%20V1.postman_collection.json).
+2. Download the [ContactsAPI V2 Postman Collection](./postman/ContactsAPI%20V2.postman_collection.json).
+3. Open Postman.
+4. Click on the **Import** button.
+5. Select the downloaded `.json` files.
+6. The collections will be imported, and you can start testing the API.
 
 ## License
 
