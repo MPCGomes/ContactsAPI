@@ -159,23 +159,22 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
 
 ```
 .
-├── node_modules
 ├── src
 │   ├── controllers
 │   │   ├── v1
 │   │   │   └── contactController.ts
 │   │   ├── v2
 │   │   │   └── contactController.ts
-│   ├── dtos
-│   │   ├── v1
-│   │   │   └── contactDTO.ts
-│   │   ├── v2
-│   │   │   └── contactDTO.ts
 │   ├── daos
 │   │   ├── v1
 │   │   │   └── contactDAO.ts
 │   │   ├── v2
 │   │   │   └── contactDAO.ts
+│   ├── dtos
+│   │   ├── v1
+│   │   │   └── contactDTO.ts
+│   │   ├── v2
+│   │   │   └── contactDTO.ts
 │   ├── models
 │   │   └── contact.ts
 │   ├── repositories
@@ -185,9 +184,14 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
 │   │   │   └── contactRoutes.ts
 │   │   ├── v2
 │   │   │   └── contactRoutes.ts
+│   ├── services
+│   │   ├── v1
+│   │   │   └── contactService.ts
+│   │   ├── v2
+│   │   │   └── contactService.ts
 │   ├── utils
 │   │   └── swagger.ts
-│   ├── index.ts
+│   └── index.ts
 ├── swagger.yaml
 ├── package.json
 ├── tsconfig.json

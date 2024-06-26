@@ -2,6 +2,12 @@
 
 # Changelog
 
+## [2.1.0] - 2024-06-27
+### Added
+- Service layer for business logic, separating it from controllers.
+- Services for v1 and v2 to handle business logic.
+- Updated Controllers to use Services for v1 and v2.
+
 ## [2.0.0] - 2024-06-27
 ### Added
 - Data Transfer Objects (DTOs) for v1 and v2.
