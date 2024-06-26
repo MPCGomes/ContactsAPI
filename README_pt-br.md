@@ -4,37 +4,38 @@
 
 ## Visão Geral
 
-ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma lista de contatos com campos como photoUrl, GivenName, familyName, vários phoneNumbers, emailAddresses e events. Este projeto usa TypeScript para digitação estática e MongoDB para gerenciamento de banco de dados. A API é documentada usando Swagger para facilitar a interação.
+ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma lista de contatos com campos como photoUrl, givenName, familyName, múltiplos phoneNumbers, emailAddresses e eventos. Este projeto utiliza TypeScript para tipagem estática e MongoDB para gerenciamento de banco de dados. A API é documentada usando Swagger para facilitar a interação.
 
-## Características
+## Funcionalidades
 
 - **API First**: A API foi projetada e documentada antes da implementação do código.
-- **Operações CRUD**: Criar, ler, atualizar e excluir contatos.
-- **Validação de dados**: Garante que os dados de contato estejam em conformidade com o esquema especificado usando o Mongoose.
-- **Documentação do Swagger**: Fornece documentação de API interativa usando [Swagger UI](http://localhost:5500/api-docs) e [Documentação da API SwaggerHub](https://app.swaggerhub.com/apis/MPCGOMES2/ContatosAPI/1.0.0).
+- **Operações CRUD**: Criar, Ler, Atualizar e Deletar contatos.
+- **Validação de Dados**: Garante que os dados do contato estejam em conformidade com o esquema especificado usando Mongoose.
+- **Documentação Swagger**: Fornece documentação de API interativa usando [Swagger UI](http://localhost:5500/api-docs) e [Documentação da API no SwaggerHub](https://app.swaggerhub.com/apis/MPCGOMES2/ContactsAPI/1.0.0).
+- **Versionamento**: Suporta endpoints v1 e v2.
 
-## Tecnologias Usadas
+## Tecnologias Utilizadas
 
-- **Express.js**: Estrutura Web para construção do lado do servidor.
-- **MongoDB**: Banco de dados NoSQL usado para armazenar informações de contato.
-- **Mongoose**: Biblioteca ODM (Object Data Modeling) para definição de esquemas e interação com MongoDB.
-- **Node.js**: Tempo de execução JavaScript para construção do lado do servidor.
-- **Postman**: Ferramenta utilizada para testes e interação com as APIs.
-- **Swagger Editor**: Ferramenta para projetar e documentar as APIs com a especificação OpenAPI.
-- **SwaggerHub**: Plataforma para hospedagem e colaboração na documentação da API.
-- **Swagger UI**: Ferramenta para documentar e testar as APIs, fornecendo uma interface interativa.
-- **TypeScript**: Superconjunto de JavaScript que adiciona digitação estática ao código do lado do servidor.
-- **YAMLJS**: Biblioteca para análise de arquivos YAML, usada para carregar a documentação do Swagger.
+- **Express.js**: Framework web para construção do lado do servidor.
+- **MongoDB**: Banco de dados NoSQL utilizado para armazenar informações de contato.
+- **Mongoose**: Biblioteca ODM (Object Data Modeling) para definir esquemas e interagir com o MongoDB.
+- **Node.js**: Ambiente de execução JavaScript para construção do lado do servidor.
+- **Postman**: Ferramenta usada para testar e interagir com a API.
+- **Swagger Editor**: Ferramenta para projetar e documentar a API com a Especificação OpenAPI.
+- **SwaggerHub**: Plataforma para hospedar e colaborar na documentação da API.
+- **Swagger UI**: Ferramenta para documentar e testar a API, fornecendo uma interface interativa.
+- **TypeScript**: Superset do JavaScript que adiciona tipagem estática ao código do servidor.
+- **YAMLJS**: Biblioteca para analisar arquivos YAML, usada para carregar a documentação Swagger.
 
 ## Pré-requisitos
 
-- **Node.js**: v12.x or higher
-- **npm**: v6.x or higher
-- **MongoDB**: v4.x or higher
+- **Node.js**: v12.x ou superior
+- **npm**: v6.x ou superior
+- **MongoDB**: v4.x ou superior
 
 ## Instalação
 
-1. **Clonar repositório**:
+1. **Clonar o repositório**:
    ```bash
    git clone https://github.com/your-username/ContactsAPI.git
    cd ContactsAPI
@@ -45,12 +46,12 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
    npm install
    ```
 
-3. **Configurar TypeScript**:
+3. **Configurar o TypeScript**:
    ```bash
    npx tsc
    ```
 
-4. **Iniciar MongoDB**:
+4. **Iniciar o MongoDB**:
    - **Windows/Mac/Linux**: Follow the [official MongoDB installation guide](https://docs.mongodb.com/manual/installation/).
 
 5. **Iniciar servidor**:
@@ -58,88 +59,101 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
    node dist/index.js
    ```
 
-## API Endpoints
+## Endpoints da API
 
-### Criar Novo Contato
+### Endpoints da v1
 
-- **Method**: POST
-- **URL**: /api/v1/contacts
-- **Headers**: Content-Type: application/json
-- **Body**:
+#### Criar um Novo Contato
+
+- **Método**: POST
+- **URL**: `/api/v1/contacts`
+- **Cabeçalhos**: `Content-Type: application/json`
+- **Corpo**:
   ```json
   {
-    "firstName": "Alice",
-    "lastName": "Johnson",
-    "picture": "http://example.com/picture3.jpg",
-    "company": "Example LLC",
-    "phone": [
-      {
-        "number": "5555555555",
-        "label": "Home"
-      }
-    ],
-    "email": [
-      {
-        "address": "alice.johnson@example.com",
-        "label": "Home"
-      }
-    ],
-    "significantDate": [
-      {
-        "date": "2000-03-03T00:00:00Z",
-        "label": "Other"
-      }
-    ]
+    "givenName": "John",
+    "familyName": "Doe",
+    "phoneNumbers": [{ "value": "+00 00 00000-0000", "type": "mobile" }],
+    "emailAddresses": [{ "value": "john.doe@example.com", "type": "home" }]
   }
   ```
 
-### Obter Todos os Contatos
+#### Obter Todos os Contatos
 
-- **Method**: GET
-- **URL**: /api/v1/contacts
+- **Método**: GET
+- **URL**: `/api/v1/contacts`
 
-### Obter Contato por ID
+#### Obter Contato por ID
 
-- **Method**: GET
-- **URL**: /api/v1/contacts/{contactId}
+- **Método**: GET
+- **URL**: `/api/v1/contacts/{contactId}`
 
-### Atualizar Contato
+#### Atualizar um Contato
 
-- **Method**: PUT
-- **URL**: /api/v1/contacts/{contactId}
-- **Headers**: Content-Type: application/json
-- **Body**:
+- **Método**: PUT
+- **URL**: `/api/v1/contacts/{contactId}`
+- **Cabeçalhos**: `Content-Type: application/json`
+- **Corpo**:
   ```json
   {
-    "firstName": "Alice",
-    "lastName": "Johnson",
-    "picture": "http://example.com/picture3.jpg",
-    "company": "Example LLC",
-    "phone": [
-      {
-        "number": "5555555555",
-        "label": "Home"
-      }
-    ],
-    "email": [
-      {
-        "address": "alice.johnson@example.com",
-        "label": "Home"
-      }
-    ],
-    "significantDate": [
-      {
-        "date": "2000-03-03T00:00:00Z",
-        "label": "Other"
-      }
-    ]
+    "givenName": "John",
+    "familyName": "Doe",
+    "phoneNumbers": [{ "value": "+00 00 00000-0000", "type": "mobile" }],
+    "emailAddresses": [{ "value": "john.doe@example.com", "type": "home" }]
   }
   ```
 
-### Deletar Contato
+#### Deletar um Contato
 
-- **Method**: DELETE
-- **URL**: /api/v1/contacts/{contactId}
+- **Método**: DELETE
+- **URL**: `/api/v1/contacts/{contactId}`
+
+### Endpoints da v2
+
+#### Criar um Novo Contato
+
+- **Método**: POST
+- **URL**: `/api/v2/contacts`
+- **Cabeçalhos**: `Content-Type: application/json`
+- **Corpo**:
+  ```json
+  {
+    "givenName": "Marcos",
+    "familyName": "Gomes",
+    "phoneNumbers": [{ "value": "+00 00 00000-0000", "type": "mobile" }],
+    "emailAddresses": [{ "value": "marcos.gomes@example.com", "type": "home" }]
+  }
+  ```
+
+#### Obter Todos os Contatos
+
+- **Método**: GET
+- **URL**: `/api/v2/contacts`
+
+#### Obter Contato por ID
+
+- **Método**: GET
+- **URL**: `/api/v2/contacts/{contactId}`
+
+#### Atualizar um Contato
+
+- **Método**: PATCH
+- **URL**: `/api/v2/contacts/{contactId}`
+- **Cabeçalhos**: `Content-Type: application/json`
+- **Corpo**:
+  ```json
+  {
+    "givenName": "Marcos",
+    "familyName": "Gomes",
+    "phoneNumbers": [{ "value": "+00 00 0000-0000", "type": "work" }],
+    "emailAddresses": [{ "value": "marcos.gomes@example2.com", "type": "work" }]
+  }
+  ```
+
+#### Deletar um Contato
+
+- **Método**: DELETE
+- **URL**: `/api/v2/contacts/{contactId}`
 
 ## Estrutura do Projeto
 
@@ -148,14 +162,32 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
 ├── node_modules
 ├── src
 │   ├── controllers
-│   │   └── contactController.ts
+│   │   ├── v1
+│   │   │   └── contactController.ts
+│   │   ├── v2
+│   │   │   └── contactController.ts
+│   ├── dtos
+│   │   ├── v1
+│   │   │   └── contactDTO.ts
+│   │   ├── v2
+│   │   │   └── contactDTO.ts
+│   ├── daos
+│   │   ├── v1
+│   │   │   └── contactDAO.ts
+│   │   ├── v2
+│   │   │   └── contactDAO.ts
 │   ├── models
 │   │   └── contact.ts
+│   ├── repositories
+│   │   └── contactRepository.ts
 │   ├── routes
-│   │   └── contactRoutes.ts
+│   │   ├── v1
+│   │   │   └── contactRoutes.ts
+│   │   ├── v2
+│   │   │   └── contactRoutes.ts
 │   ├── utils
 │   │   └── swagger.ts
-│   └── index.ts
+│   ├── index.ts
 ├── swagger.yaml
 ├── package.json
 ├── tsconfig.json
@@ -164,4 +196,4 @@ ContactsAPI é uma aplicação RESTful Node.js e Express.js para gerenciar uma l
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT.
+Este projeto é licenciado sob a Licença MIT.

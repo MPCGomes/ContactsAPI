@@ -12,6 +12,7 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 - **CRUD Operations**: Create, Read, Update, and Delete contacts.
 - **Data Validation**: Ensures that contact data conforms to the specified schema using Mongoose.
 - **Swagger Documentation**: Provides interactive API documentation using [Swagger UI](http://localhost:5500/api-docs) and [SwaggerHub API Documentation](https://app.swaggerhub.com/apis/MPCGOMES2/ContactsAPI/1.0.0).
+- **Versioning**: Supports v1 and v2 endpoints.
 
 ## Technologies Used
 
@@ -19,10 +20,10 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 - **MongoDB**: NoSQL database used for storing contact information.
 - **Mongoose**: ODM (Object Data Modeling) library for defining schemas and interacting with MongoDB.
 - **Node.js**: JavaScript runtime for building the server-side.
-- **Postman**: Tool used for testing and interacting with the APIs.
-- **Swagger Editor**: Tool for designing and documenting the APIs with the OpenAPI Specification.
+- **Postman**: Tool used for testing and interacting with the API.
+- **Swagger Editor**: Tool for designing and documenting the API with the OpenAPI Specification.
 - **SwaggerHub**: Platform for hosting and collaborating on the API documentation.
-- **Swagger UI**: Tool for documenting and testing the APIs, providing an interactive interface.
+- **Swagger UI**: Tool for documenting and testing the API, providing an interactive interface.
 - **TypeScript**: Superset of JavaScript that adds static typing to the server-side code.
 - **YAMLJS**: Library for parsing YAML files, used to load the Swagger documentation.
 
@@ -35,111 +36,128 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 ## Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/your-username/ContactsAPI.git
    cd ContactsAPI
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 3. **Set up TypeScript**:
+
    ```bash
    npx tsc
    ```
 
 4. **Start MongoDB**:
+
    - **Windows/Mac/Linux**: Follow the [official MongoDB installation guide](https://docs.mongodb.com/manual/installation/).
 
 5. **Start the server**:
    ```bash
    node dist/index.js
    ```
-
+   
 ## API Endpoints
 
-### Create a New Contact
+### v1 Endpoints
+
+#### Create a New Contact
 
 - **Method**: POST
-- **URL**: /api/v1/contacts
-- **Headers**: Content-Type: application/json
+- **URL**: `/api/v1/contacts`
+- **Headers**: `Content-Type: application/json`
 - **Body**:
   ```json
   {
-    "firstName": "Alice",
-    "lastName": "Johnson",
-    "picture": "http://example.com/picture3.jpg",
-    "company": "Example LLC",
-    "phone": [
-      {
-        "number": "5555555555",
-        "label": "Home"
-      }
-    ],
-    "email": [
-      {
-        "address": "alice.johnson@example.com",
-        "label": "Home"
-      }
-    ],
-    "significantDate": [
-      {
-        "date": "2000-03-03T00:00:00Z",
-        "label": "Other"
-      }
-    ]
+    "givenName": "John",
+    "familyName": "Doe",
+    "phoneNumbers": [{ "value": "+00 00 00000-0000", "type": "mobile" }],
+    "emailAddresses": [{ "value": "john.doe@example.com", "type": "home" }]
   }
   ```
 
-### Get All Contacts
+#### Get All Contacts
 
 - **Method**: GET
-- **URL**: /api/v1/contacts
+- **URL**: `/api/v1/contacts`
 
-### Get Contact by ID
+#### Get Contact by ID
 
 - **Method**: GET
-- **URL**: /api/v1/contacts/{contactId}
+- **URL**: `/api/v1/contacts/{contactId}`
 
-### Update a Contact
+#### Update a Contact
 
 - **Method**: PUT
-- **URL**: /api/v1/contacts/{contactId}
-- **Headers**: Content-Type: application/json
+- **URL**: `/api/v1/contacts/{contactId}`
+- **Headers**: `Content-Type: application/json`
 - **Body**:
   ```json
   {
-    "firstName": "Alice",
-    "lastName": "Johnson",
-    "picture": "http://example.com/picture3.jpg",
-    "company": "Example LLC",
-    "phone": [
-      {
-        "number": "5555555555",
-        "label": "Home"
-      }
-    ],
-    "email": [
-      {
-        "address": "alice.johnson@example.com",
-        "label": "Home"
-      }
-    ],
-    "significantDate": [
-      {
-        "date": "2000-03-03T00:00:00Z",
-        "label": "Other"
-      }
-    ]
+    "givenName": "John",
+    "familyName": "Doe",
+    "phoneNumbers": [{ "value": "+00 00 00000-0000", "type": "mobile" }],
+    "emailAddresses": [{ "value": "john.doe@example.com", "type": "home" }]
   }
   ```
 
-### Delete a Contact
+#### Delete a Contact
 
 - **Method**: DELETE
-- **URL**: /api/v1/contacts/{contactId}
+- **URL**: `/api/v1/contacts/{contactId}`
+
+### v2 Endpoints
+
+#### Create a New Contact
+
+- **Method**: POST
+- **URL**: `/api/v2/contacts`
+- **Headers**: `Content-Type: application/json`
+- **Body**:
+  ```json
+  {
+    "givenName": "Marcos",
+    "familyName": "Gomes",
+    "phoneNumbers": [{ "value": "+00 00 00000-0000", "type": "mobile" }],
+    "emailAddresses": [{ "value": "marcos.gomes@example.com", "type": "home" }]
+  }
+  ```
+
+#### Get All Contacts
+
+- **Method**: GET
+- **URL**: `/api/v2/contacts`
+
+#### Get Contact by ID
+
+- **Method**: GET
+- **URL**: `/api/v2/contacts/{contactId}`
+
+#### Update a Contact
+
+- **Method**: PATCH
+- **URL**: `/api/v2/contacts/{contactId}`
+- **Headers**: `Content-Type: application/json`
+- **Body**:
+  ```json
+  {
+    "givenName": "Marcos",
+    "familyName": "Gomes",
+    "phoneNumbers": [{ "value": "+00 00 0000-0000", "type": "work" }],
+    "emailAddresses": [{ "value": "marcos.gomes@example2.com", "type": "work" }]
+  }
+  ```
+
+#### Delete a Contact
+
+- **Method**: DELETE
+- **URL**: `/api/v2/contacts/{contactId}`
 
 ## Project Structure
 
@@ -148,14 +166,32 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 ├── node_modules
 ├── src
 │   ├── controllers
-│   │   └── contactController.ts
+│   │   ├── v1
+│   │   │   └── contactController.ts
+│   │   ├── v2
+│   │   │   └── contactController.ts
+│   ├── dtos
+│   │   ├── v1
+│   │   │   └── contactDTO.ts
+│   │   ├── v2
+│   │   │   └── contactDTO.ts
+│   ├── daos
+│   │   ├── v1
+│   │   │   └── contactDAO.ts
+│   │   ├── v2
+│   │   │   └── contactDAO.ts
 │   ├── models
 │   │   └── contact.ts
+│   ├── repositories
+│   │   └── contactRepository.ts
 │   ├── routes
-│   │   └── contactRoutes.ts
+│   │   ├── v1
+│   │   │   └── contactRoutes.ts
+│   │   ├── v2
+│   │   │   └── contactRoutes.ts
 │   ├── utils
 │   │   └── swagger.ts
-│   └── index.ts
+│   ├── index.ts
 ├── swagger.yaml
 ├── package.json
 ├── tsconfig.json
