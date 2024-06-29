@@ -1,7 +1,5 @@
 # Changelog
 
-# Changelog
-
 ## [2.1.0] - 2024-06-27
 ### Added
 - Service layer for business logic, separating it from controllers.
