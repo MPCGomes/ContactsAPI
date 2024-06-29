@@ -1,6 +1,6 @@
-# ContactsAPI
-
 [![English](https://img.shields.io/badge/lang-english-red.svg)](README.md)
+
+# ContactsAPI
 
 ## Visão Geral
 
