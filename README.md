@@ -75,10 +75,10 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 - **Body**:
   ```json
   {
-    "givenName": "John",
-    "familyName": "Doe",
+    "givenName": "Marcos",
+    "familyName": "Gomes",
     "phoneNumbers": [{ "value": "+00 00 00000-0000", "type": "mobile" }],
-    "emailAddresses": [{ "value": "john.doe@example.com", "type": "home" }]
+    "emailAddresses": [{ "value": "marcos.gomes@example.com", "type": "home" }]
   }
   ```
 
@@ -100,10 +100,10 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 - **Body**:
   ```json
   {
-    "givenName": "John",
-    "familyName": "Doe",
+    "givenName": "Marcos",
+    "familyName": "Gomes",
     "phoneNumbers": [{ "value": "+00 00 00000-0000", "type": "mobile" }],
-    "emailAddresses": [{ "value": "john.doe@example.com", "type": "home" }]
+    "emailAddresses": [{ "value": "marcos.gomes@example.com", "type": "home" }]
   }
   ```
 
@@ -163,7 +163,6 @@ ContactsAPI is a RESTful Node.js and Express.js application for managing a conta
 
 ```
 .
-├── node_modules
 ├── src
 │   ├── controllers
 │   │   ├── v1
