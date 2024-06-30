@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import * as contactService from "../../services/v1/contactService";
-import { ContactDTO } from "../../dtos/v1/contactDTO";
-import logger from "../../utils/logger";
+import * as contactService from "../services/contactService";
+import { ContactDTO } from "../dtos/contactDTO";
+import logger from "../utils/logger";
 
 export const getContacts = async (req: Request, res: Response) => {
   try {
