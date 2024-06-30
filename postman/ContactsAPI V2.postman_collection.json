@@ -83,37 +83,6 @@
 			"response": []
 		},
 		{
-			"name": "Update Contact by ID",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"givenName\": \"John\",\r\n  \"familyName\": \"Doe\",\r\n  \"phoneNumbers\": [{ \"value\": \"+00 00 00000-0000\", \"type\": \"mobile\" }],\r\n  \"emailAddresses\": [{ \"value\": \"john.doe@example.com\", \"type\": \"home\" }]\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5500/api/v2/contacts/666f3af5b30000167b5d632e",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5500",
-					"path": [
-						"api",
-						"v2",
-						"contacts",
-						"666f3af5b30000167b5d632e"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Delete Contact by ID",
 			"request": {
 				"method": "DELETE",
@@ -136,7 +105,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Update Contact by ID",
 			"request": {
 				"method": "PATCH",
 				"header": [],
@@ -150,7 +119,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5500/api/v2/contacts/667c2e497a47cd85a4c108ce",
+					"raw": "http://localhost:5500/api/v2/contacts/6681a14d2ed583ff5bcce0d7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -160,7 +129,7 @@
 						"api",
 						"v2",
 						"contacts",
-						"667c2e497a47cd85a4c108ce"
+						"6681a14d2ed583ff5bcce0d7"
 					]
 				}
 			},
