@@ -11,7 +11,7 @@ export interface Email {
 }
 
 export interface Event {
-  value: string;
+  date: string;
   type: string;
 }
 

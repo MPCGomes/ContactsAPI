@@ -5,7 +5,7 @@ import {
   createContact,
   updateContact,
   deleteContact,
-} from "../../controllers/v2/contactController";
+} from "../../controllers/contactController";
 
 const router = Router();
 
